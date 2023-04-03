@@ -1,22 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
 let guesses = [];
-const words = ["javascript", "html", "css", "react", "nodejs"];
+const words = ["ronaldo", "casemiro", "ramos", "messi", "neymar","mbappe","halaand"];
 let word = words[Math.floor(Math.random() * words.length)];
-const wordDisplay = document.getElementById("word");
-const guessDisplay = document.getElementById("guesses");
+console.log(word);
+
+
 const messageDisplay = document.getElementById("message");
-console.log (messageDisplay);
+
+const startgame = document.getElementById("start");
+
 const start=()=>{
-      
+  startgame.classList.add("hidden");
   const message = document.getElementById("welcome");
   const input = document.querySelectorAll(".hidden");
   message.textContent="Good Luck!!";
   for (var i = 0; i < input.length; i++) {
     input[i].classList.remove("hidden");      
   }
+
 }
 
-const startgame = document.getElementById("start");
+
 startgame.addEventListener('click', start);
 
 
@@ -33,25 +37,31 @@ const guess = () => {
       } else {
         guesses.push(guess);
         console.log(guesses);
+        display();
       }
-
     }
+
+
+
+const display=()=>{
+  const guessDisplay = document.getElementById("guesses");
+  guessDisplay.innerHTML = "Guessed letters: " + guesses.join(", ");
+ // const wordDisplay = document.getElementById("word");
+  if (!word.split("").some((letter) => !guesses.includes(letter))) {
+         messageDisplay.innerHTML = "Congratulations, you win!";
+       } else if (guesses.length === 6) {
+           messageDisplay.innerHTML = "Sorry, you lose! The word was '" + word + "'.";
+         }
+       } 
 
 const check = document.getElementById("guess");
 check.addEventListener('click', guess);
 
+
+
+
     });
-    //    // displayWord();
-    //     guessDisplay.innerHTML = "Guessed letters: " + guesses.join(", ");
-    //     if (!word.split("").some((letter) => !guesses.includes(letter))) {
-    //       messageDisplay.innerHTML = "Congratulations, you win!";
-    //     } else if (guesses.length === 6) {
-    //       messageDisplay.innerHTML =
-    //         "Sorry, you lose! The word was '" + word + "'.";
-    //     }
-    //   }
-    // };
-  
-//displayWord();
+
+
   
   
