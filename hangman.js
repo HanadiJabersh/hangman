@@ -8,6 +8,7 @@ console.log(word);
 const messageDisplay = document.getElementById("message");
 
 const startgame = document.getElementById("start");
+const newgame = document.getElementById("newgame");
 
 const start=()=>{
   startgame.classList.add("hidden");
@@ -46,19 +47,42 @@ const guess = () => {
 const display=()=>{
   const guessDisplay = document.getElementById("guesses");
   guessDisplay.innerHTML = "Guessed letters: " + guesses.join(", ");
- // const wordDisplay = document.getElementById("word");
-  if (!word.split("").some((letter) => !guesses.includes(letter))) {
-         messageDisplay.innerHTML = "Congratulations, you win!";
-       } else if (guesses.length === 6) {
-           messageDisplay.innerHTML = "Sorry, you lose! The word was '" + word + "'.";
-         }
-       } 
+ 
+ let hiddenWord = "";
+ for (let i = 0; i < word.length; i++) {
+   if (guesses.includes(word[i])) {
+     hiddenWord += word[i] + " ";
+   } else {
+     hiddenWord += "_ ";
+   }
+ }
+ const wordDisplay = document.getElementById("message");
+ wordDisplay.innerHTML = hiddenWord.trim();
 
+ // Check if the user has won or lost
+ if (!hiddenWord.includes("_")) {
+   messageDisplay.innerHTML = "Congratulations, you win!";
+   newgame.classList.add("hidden"); // hide new game button
+ } else if (guesses.length === 6) {
+   messageDisplay.innerHTML = "Sorry, you lose! The word was '" + word + "'.";
+   newgame.classList.add("hidden"); // hide new game button
+ }
+}
 const check = document.getElementById("guess");
 check.addEventListener('click', guess);
 
 
+const newGame = () => {
+  guesses = [];
+  word = words[Math.floor(Math.random() * words.length)];
+  console.log(word);
+  messageDisplay.innerHTML = "";
+  display();
+}
 
+
+
+newgame.addEventListener('click', newGame);
 
     });
 

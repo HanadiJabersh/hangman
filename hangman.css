@@ -1,24 +1,79 @@
+body{
+background-color: #1c1c1c;
+        color: #fff;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 20px;
+        margin: 0;
+        padding: 0;
+}
 h1{
+    font-size: 50px;
+    text-align: center;
+    margin: 0;
+    padding: 30px;
     position: absolute;
     top: 10%;
     left: 50%;
     transform: translate(-50%,0);
+    
 }
 #start{
-position: absolute;
-top: 22%;
-left: 50%;
-transform: translate(-50%, -50%);
-
-font-size: 150%;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100%;
 }
 .hidden{
     visibility: hidden;
 }
 
 #game{
-position: absolute;
-top:50%;;
-left:50%;
-transform: translate(-50%, -50%);
+    margin: 30px auto;
+    max-width: 500px;
+    text-align: center;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
+  
+  
+button {
+        background-color: #c62828;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 20px;
+        margin-top: 20px;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+      }
+      button:hover {
+        background-color: #d32f2f;
+      }
+      #guess {
+        background-color: #c62828;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 20px;
+        margin-top: 20px;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+      }
+      #guess:hover {
+        background-color:blue;
+      }
+
+      #guesses {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+      #message {
+        font-size: 30px;
+        margin-top: 20px;
+      }
